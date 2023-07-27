@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    color: hsl(236, 13%, 42%);
+    line-height: 1.5;
+}
+
+body, button {
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    padding: 5% 10% 0;
+    font-size: 15px;
+    position: relative;
+    min-height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 0;
+}
+
+ul:not(.menu-icon) {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 40px;
+    
+}
+
+nav ul li:hover {
+    color: hsl(5, 85%, 63%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.menu-icon {
+    display:none;
+}
+
+main {
+    display: grid;
+    grid-template-areas: "a a b" "a a b" "c c c";
+    padding-top: 40px;
+    gap: 5em 2em;
+
+}
+
+
+main article {
+    display: grid;
+    column-gap: 2em;
+    grid-template: 340px 1fr / 1fr 1fr;
+    grid-area: a;
+}
+
+main article .image {
+    background: url("assets/images/image-web-3-desktop.jpg") no-repeat;
+    background-size: cover;
+    grid-column: span 2;
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+main article h1 {
+    line-height: 1;
+    padding-right: 20px;
+    font-size: 58px;
+    font-weight: 800;
+}
+
+button {
+    border: none;
+    height: 50px;
+    width: 170px;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    background-color: hsl(5, 85%, 63%);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: hsl(240, 100%, 5%);
+    transition: .2s;
+}
+
+main aside{
+    color: white;
+    grid-area: b;
+    background-color: hsl(240, 100%, 5%);
+    padding: 30px;
+}
+
+main aside .new {
+    color: hsl(35, 77%, 62%);
+    font-weight: 800;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+main aside .header {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+main aside .header:hover {
+    color: hsl(35, 77%, 62%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+hr {
+    margin: 30px 0;
+}
+
+main ul{
+    grid-area: c;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4em;
+}
+
+main ul li{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 120px 1fr ;
+}
+
+main ul li .number {
+    font-size: 30px;
+    color: hsl(233, 8%, 79%);
+    font-weight: 700;
+}
+
+main ul li .header {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+main ul li .header:hover {
+    color: hsl(5, 85%, 63%);
+    cursor: pointer;
+    transition: .2s;
+}
+
+main ul li img {
+    width: 100px;
+    grid-row: span 3;
+}
+
+.attribution {
+    margin: 0 -10%;
+    text-align: center;
+    position: fixed;
+    bottom: -50px;
+    background: white;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+body:hover .attribution, .attribution:hover {
+    bottom: 0;
+}
+
+@media (max-width: 1200px) {
+    body {
+        padding: 6%;
+    }
+    main article {
+        grid-template-rows: 45% 55%;
+    }
+    main {
+        row-gap: 2em;
+    }
+
+    .attribution {
+        margin: 0 -6%;
+    }
+}
+
+@media (max-width: 1024px) {
+    body {
+        padding: 5%;
+    }
+    main article {
+        grid-template-rows: 42% 58%;
+    }
+
+    main ul li {
+        display: block;
+    }
+    .attribution {
+        margin: 0 -5%;
+    }
+}
+
+@media (max-width: 768px) {
+    header img {
+        width: 50px;
+    }
+    nav {
+        position: absolute;
+        right: 0;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        height: 0;
+        opacity: 0;
+        transition: 1s;
+    }
+
+    .opened {
+        background: rgba(0, 0, 0, 0.6);
+        height: auto;
+        opacity: 1;
+    }
+
+    nav ul {
+        background-color: white;
+        flex-direction: column;
+        position: fixed;
+        right: -65%;
+        width: 65%;
+        height: 100vh;
+        font-size: 18px;
+        padding-top: 150px;
+        padding-left: 20px;
+        transition: 1s;
+    }
+
+    .opened ul {
+        right: 0;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 25px;
+    }
+
+    .menu-icon {
+        width: 40px;
+        height: 25px;
+        cursor: pointer;
+        display: block;
+        z-index: 1000;
+    }
+    
+    .menu-icon li {
+        display:block;
+        width:100%;
+        height: 4px;
+        background: black;
+        border-radius: 3px;
+        transition: .5s;
+    }
+    
+    .l2 {
+        margin:4px auto;
+    }
+    
+    .active .l1 {
+        animation: line1 .8s forwards;
+    }
+    
+    @keyframes line1 {
+        50% {transform: translateY(18px)}
+        100% {transform: translateY(12px) rotate(135deg)}
+    }
+    
+    .active .l2 {
+        animation:line2 .8s forwards;
+    }
+    
+    @keyframes line2 {
+        0% {transform: scale(1); opacity: 1}
+        100% {transform: scale(0); opacity: 0}
+    }
+    
+    .active .l3 {
+        animation: line3 .8s forwards;
+    }
+    
+    @keyframes line3 {
+        50% {transform: translateY(-15px)}
+        100% {transform:translateY(-4px) rotate(45deg)}
+    }
+    
+    .inactive .l1 {
+        animation:line1-reverse .8s forwards;
+    }
+    
+    @keyframes line1-reverse {
+        0% {transform: translateY(12px) rotate(135deg)}
+        50% {transform: translateY(18px) rotate(0deg)}
+        100% {transform: translateY(0px) rotate(0deg)}
+    }
+    
+    .inactive .l2 {
+        opacity: 0;
+        animation: line2-reverse .8s forwards;
+        animation-delay: .2s;
+    }
+    
+    @keyframes line2-reverse {
+        0% {transform: scale(0); opacity: 0}
+        100% {transform: scale(1); opacity: 1}
+    }
+    
+    .inactive .l3 {
+        animation: line3-reverse .8s forwards;
+    }
+    
+    @keyframes line3-reverse {
+        0% {transform: translateY(-4px) rotate(45deg)}
+        50% {transform: translateY(-15px) rotate(0deg)}
+        100% {transform: translateY(0px) rotate(0deg)}
+    }
+
+    main {
+        display: block;
+    }
+
+    main article {
+        display: block;
+    }
+
+    main article .image {
+        background: url("assets/images/image-web-3-mobile.jpg") no-repeat;
+        background-size: cover;
+        height: 281px;
+    }
+
+    main article h1 {
+        margin-bottom: 20px;
+        font-size: 40px;
+    }
+
+    button {
+        margin-top: 30px;
+    }
+
+    main aside {
+        padding: 20px;
+        margin: 60px 0;
+    }
+
+    main aside .new {
+        font-size: 32px;
+    }
+
+    main ul {
+        display: block !important;
+    }
+
+    main ul li {
+        display: grid;
+        margin-bottom: 40px;
+    }
+
+    .attribution {
+        display: none;
+    }
+}
